@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "I3WAD22-ADO-Database", "I3WAD22-ADO-Database\I3WAD22-ADO-Database.sqlproj", "{AA04685C-205E-46BC-9860-5F7387A33462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I3WAD22-ADO-Console", "I3WAD22-ADO-Console\I3WAD22-ADO-Console.csproj", "{064B160B-235D-4409-9BC4-A52BAF049638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "I3WAD22-ADO-Console", "I3WAD22-ADO-Console\I3WAD22-ADO-Console.csproj", "{064B160B-235D-4409-9BC4-A52BAF049638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I3WAD22-ADO-Exo-Console", "I3WAD22-ADO-Exo-Console\I3WAD22-ADO-Exo-Console.csproj", "{A52DFE65-7AE1-4515-AD72-D7220BB7A96C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{064B160B-235D-4409-9BC4-A52BAF049638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{064B160B-235D-4409-9BC4-A52BAF049638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{064B160B-235D-4409-9BC4-A52BAF049638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A52DFE65-7AE1-4515-AD72-D7220BB7A96C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52DFE65-7AE1-4515-AD72-D7220BB7A96C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52DFE65-7AE1-4515-AD72-D7220BB7A96C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52DFE65-7AE1-4515-AD72-D7220BB7A96C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
