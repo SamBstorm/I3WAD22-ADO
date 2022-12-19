@@ -1,4 +1,5 @@
-﻿using System;
+﻿using I3WAD22_ADO_Console.Models;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -11,6 +12,8 @@ namespace I3WAD22_ADO_Console
         {
             //Pas nécessaire pour ADO.net mais permet d'avoir la console en unicode (pour les € par exemple)
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+
+            Spectacle sp1 = new Spectacle();
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -53,32 +56,52 @@ namespace I3WAD22_ADO_Console
                 //    }
                 //}
                 #endregion
-                #endregion
-                #region Mode Déconnecté (Je sais que je risque de perdre la connection - exemple : en mobile - je charge le tout avant utilisation)
+                #region Exo ExecuteReader sur Spectacle
+
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    //Prépare la commande
-                    command.CommandText = "SELECT * FROM [Type]";
-
-                    //Prépare adaptateur pour remplir mon DataSet ou DataTable
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                    //Prépare DataSet ou DataTable pour récupérer les données
-                    DataTable table_type = new DataTable();
-
-                    //Demande à l'adaptateur de remplir le DataTable/DataSet grâce à la commande
-                    adapter.Fill(table_type);   //la méthode Fill() établi lui-même la connection
-                                                //(Pas besoin d'Open(), Close(), ...)
-
-                    //Je manipule le DataSet/DataTable grâce à ses propriétés (Tables, Rows, Columns, ... )
-                    foreach (DataRow row in table_type.Rows)
+                    command.CommandText = "SELECT * FROM [Spectacle]";
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        Console.WriteLine($"{row["idType"]}. {row["Nom"]} : {row["Prix"]}€");
+                        while (reader.Read())
+                        {
+                            sp1.idSpectacle = (int)reader[nameof(sp1.idSpectacle)];
+                            sp1.nom = (string)reader[nameof(sp1.nom)];
+                            sp1.description = (string)reader[nameof(sp1.description)];
+                        }
                     }
                 }
 
                 #endregion
+                #endregion
+                #region Mode Déconnecté (Je sais que je risque de perdre la connection - exemple : en mobile - je charge le tout avant utilisation)
+                //using (SqlCommand command = connection.CreateCommand())
+                //{
+                //    //Prépare la commande
+                //    command.CommandText = "SELECT * FROM [Type]";
+
+                //    //Prépare adaptateur pour remplir mon DataSet ou DataTable
+                //    SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                //    //Prépare DataSet ou DataTable pour récupérer les données
+                //    DataTable table_type = new DataTable();
+
+                //    //Demande à l'adaptateur de remplir le DataTable/DataSet grâce à la commande
+                //    adapter.Fill(table_type);   //la méthode Fill() établi lui-même la connection
+                //                                //(Pas besoin d'Open(), Close(), ...)
+
+                //    //Je manipule le DataSet/DataTable grâce à ses propriétés (Tables, Rows, Columns, ... )
+                //    foreach (DataRow row in table_type.Rows)
+                //    {
+                //        Console.WriteLine($"{row["idType"]}. {row["Nom"]} : {row["Prix"]}€");
+                //    }
+                //}
+
+                #endregion
             }
+
+            Console.WriteLine($"{sp1.idSpectacle}. {sp1.nom} : {sp1.description}");
         }
     }
 }
